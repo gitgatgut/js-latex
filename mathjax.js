@@ -17,8 +17,6 @@ class MJEditor {
         } catch (URIError) {
             this.input.value = '';
         }
-        console.log(this.input.value);
-        console.log(window.localStorage.mathJax);
         if (!this.input.value && window.localStorage.mathJax) {
             this.input.value = window.localStorage.mathJax;
         }
