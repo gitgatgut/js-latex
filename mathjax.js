@@ -43,9 +43,10 @@ class MJEditor {
         this.output.innerHTML = tex;
         MathJax.texReset();
         MathJax.typesetClear();
-        MathJax.typesetPromise([output]).catch(function (err) {
-            this.output.innerHTML = '';
-            this.output.appendChild(document.createTextNode(err.message));
+        const self = this;
+        MathJax.typesetPromise([output]).catch((err) => {
+            self.output.innerHTML = '';
+            self.output.appendChild(document.createTextNode(err.message));
             console.error(err);
         });
     }
