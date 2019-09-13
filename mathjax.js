@@ -3,6 +3,7 @@ class MJEditor {
     constructor() {
         this.input = document.getElementById('input');
         this.output = document.getElementById('output');
+        this.directlink = document.getElementById('directlink');
         this.setup();
     }
     setup() {
@@ -18,10 +19,16 @@ class MJEditor {
         $('#input').keyup(() => {
             window.localStorage.mathJax = this.input.value;
             this.format();
+            this.makeLink();
         });
         $('#download').click(() => {
             this.downloadSvg();
         });
+    }
+    makeLink() {
+        const url = new URL(window.location.href);
+        const href = url.pathname + '?tex=' + encodeURIComponent(this.input.value);
+        this.directlink.href = href;
     }
     format() {
         let tex = this.input.value.trim();
@@ -47,4 +54,5 @@ class MJEditor {
 window.onload = () => {
     var mjeditor = new MJEditor();
     mjeditor.format();    
+    mjeditor.makeLink();
 };
