@@ -30,9 +30,7 @@ class MJEditor {
     makeLink() {
         const url = new URL(window.location.href);
         const href = url.pathname + '?tex=' + encodeURIComponent(this.input.value);
-        if (href && href.length > 0) {
-            this.directlink.href = href;
-        }
+        this.directlink.href = href;
     }
     format() {
         let tex = this.input.value.trim();
