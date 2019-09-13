@@ -10,7 +10,11 @@ class MJEditor {
         const url = new URL(window.location.href);
         const tex = url.searchParams.get("tex");
         if (tex) {
-            this.input.value = decodeURIComponent(tex);
+            try {
+                this.input.value = decodeURIComponent(tex);
+            } catch {
+                this.input.value = '';
+            }
         } else if (window.localStorage.mathJax) {
             this.input.value = window.localStorage.mathJax;
         }
