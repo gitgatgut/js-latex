@@ -6,7 +6,7 @@ class MJEditor {
         this.directlink = document.getElementById('directlink');
         this.setup();
     }
-    setup() {
+    setup() { 
         this.input.value = '';
         try {
             const url = new URL(window.location.href);
@@ -38,7 +38,7 @@ class MJEditor {
     }
     format() {
         let tex = this.input.value.trim();
-        tex = tex.split('\n').map((s)=>'$$'+s+'$$').join('\n')
+        tex = tex.split('\n').map((s)=>'$$'+s+'$$').join('\n');
         this.output.innerHTML = tex;
         MathJax.texReset();
         MathJax.typesetClear();
