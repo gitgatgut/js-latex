@@ -7,15 +7,14 @@ class MJEditor {
         this.setup();
     }
     setup() {
-        const url = new URL(window.location.href);
-        const tex = url.searchParams.get("tex");
-        if (tex) {
-            try {
-                this.input.value = decodeURIComponent(tex);
-            } catch {
-                this.input.value = '';
-            }
-        } else if (window.localStorage.mathJax) {
+        try {
+            const url = new URL(window.location.href);
+            const tex = url.searchParams.get("tex");
+            this.input.value = decodeURIComponent(tex);
+        } catch (URIError) {
+            this.input.value = null;
+        }
+        if (!this.input.value && window.localStorage.mathJax) {
             this.input.value = window.localStorage.mathJax;
         }
         $('.resizable').resizable();
