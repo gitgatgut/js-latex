@@ -16,7 +16,6 @@ class MJEditor {
             if (ml !== null) {
                 ml = ml === 'true';
             }
-            console.log('asd '+ml);
         } catch(URIError) {}
         if (ml === null) {
             ml = window.localStorage.multiline === 'true';
@@ -44,6 +43,7 @@ class MJEditor {
         });
         this.multiline.addEventListener('click', () => {
             this.format();
+            this.makeLink();
             window.localStorage.multiline = this.multiline.checked;
         });
         this.editor.focus();
