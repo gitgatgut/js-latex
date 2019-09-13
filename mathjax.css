@@ -15,6 +15,25 @@
     max-width: fit-content;
     max-height: fit-content;
 }
+a:hover {
+    cursor: pointer;
+}
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+a {
+    border: 1px solid black;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+}
+.strip {
+    margin-top: 15px;
+}
+body {
+    font-family: sans-serif;
+}
 mjx-container {
     display: initial !important; 
 }
