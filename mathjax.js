@@ -7,13 +7,18 @@ class MJEditor {
         this.setup();
     }
     setup() {
+        this.input.value = '';
         try {
             const url = new URL(window.location.href);
             const tex = url.searchParams.get("tex");
-            this.input.value = decodeURIComponent(tex);
+            if (tex) {
+                this.input.value = decodeURIComponent(tex);;
+            }
         } catch (URIError) {
-            this.input.value = null;
+            this.input.value = '';
         }
+        console.log(this.input.value);
+        console.log(window.localStorage.mathJax);
         if (!this.input.value && window.localStorage.mathJax) {
             this.input.value = window.localStorage.mathJax;
         }
