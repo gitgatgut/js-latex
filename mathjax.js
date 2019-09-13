@@ -31,7 +31,7 @@ class MJEditor {
             tex = window.localStorage.mathJax;
         }
         this.editor.setValue(tex);
-        this.editor.refresh();    
+        this.editor.refresh();
         $('.resizable').resizable();
         $('.CodeMirror').keyup(() => {
             window.localStorage.mathJax = this.editor.getValue();
