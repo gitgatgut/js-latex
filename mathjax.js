@@ -2,7 +2,6 @@
 
 class MJEditor {
     constructor(editor) {
-        //this.input = document.getElementById('input');
         this.editor = editor;
         this.output = document.getElementById('output');
         this.directlink = document.getElementById('directlink');
@@ -12,10 +11,7 @@ class MJEditor {
         let tex = '';
         try {
             const url = new URL(window.location.href);
-            const tex = url.searchParams.get("tex");
-            if (tex) {
-                tex = decodeURIComponent(tex);;
-            }
+            tex = url.searchParams.get("tex") || '';
         } catch (URIError) {
             tex = '';
         }
