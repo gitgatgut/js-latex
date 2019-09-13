@@ -1,6 +1,13 @@
+#border {
+    border:1px solid #cbcbcb;
+    //max-width: fit-content;
+    max-height: fit-content;
+    float: left;
+    overflow: hidden;
+}
 #input {
     width: 600px; 
-    height: 100px; 
+    height: 500px; 
     border: None;
     font-size: 20px;
     padding: 5px;
@@ -11,33 +18,29 @@
     font-size: 25px;
     float: left;
     top: 150px;
+    color: white;
 }
 #strip {
     top: 0px;
     padding-top: 5px;
     padding-bottom: 15px;
 }
-.border {
-    border:1px solid black;
-    max-width: fit-content;
-    max-height: fit-content;
-    float: left;
-}
 a:hover {
     cursor: pointer;
 }
 a:visited {
     text-decoration: none;
-    color: black;
+    color: #cbcbcb;
 }
 a {
-    border: 1px solid black;
+    border: 1px solid #cbcbcb;
     padding: 5px;
     text-decoration: none;
-    color: black;
+    color: #cbcbcb;
 }
 body {
     font-family: sans-serif;
+    background: #272822;
 }
 mjx-container {
     display: grid !important;
@@ -46,4 +49,12 @@ mjx-container {
 .ui-wrapper {
     padding-bottom: 0px !important;
     padding-right: 0px !important;
+}
+.CodeMirror {
+    height: 100% !important;
+    width: 100% !important;
+    font-size: 16px;
+}
+.CodeMirror-scroll {
+    overflow-y: scroll;
 }

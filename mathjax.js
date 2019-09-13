@@ -1,43 +1,48 @@
 'use strict';
+
 class MJEditor {
-    constructor() {
-        this.input = document.getElementById('input');
+    constructor(editor) {
+        //this.input = document.getElementById('input');
+        this.editor = editor;
         this.output = document.getElementById('output');
         this.directlink = document.getElementById('directlink');
         this.setup();
     }
     setup() { 
-        this.input.value = '';
+        let tex = '';
         try {
             const url = new URL(window.location.href);
             const tex = url.searchParams.get("tex");
             if (tex) {
-                this.input.value = decodeURIComponent(tex);;
+                tex = decodeURIComponent(tex);;
             }
         } catch (URIError) {
-            this.input.value = '';
+            tex = '';
         }
-        if (!this.input.value && window.localStorage.mathJax) {
-            this.input.value = window.localStorage.mathJax;
+        if (!tex && window.localStorage.mathJax) {
+            tex = window.localStorage.mathJax;
         }
+        this.editor.setValue(tex);
+        this.editor.refresh();    
         $('.resizable').resizable();
-        $('#input').keyup(() => {
-            window.localStorage.mathJax = this.input.value;
+        $('.CodeMirror').keyup(() => {
+            window.localStorage.mathJax = this.editor.getValue();
             this.format();
             this.makeLink();
         });
         $('#download').click(() => {
             this.downloadSvg();
         });
-        this.input.focus();
+        this.editor.focus();
     }
     makeLink() {
         const url = new URL(window.location.href);
-        const href = url.pathname + '?tex=' + encodeURIComponent(this.input.value);
+        const tex = this.editor.getValue();
+        const href = url.pathname + '?tex=' + encodeURIComponent(tex);
         this.directlink.href = href;
     }
     format() {
-        let tex = this.input.value.trim();
+        let tex = this.editor.getValue().trim();
         tex = tex.split('\n').map((s)=>'$$'+s+'$$').join('\n');
         this.output.innerHTML = tex;
         MathJax.texReset();
@@ -58,7 +63,14 @@ class MJEditor {
     }
 }
 window.onload = () => {
-    var mjeditor = new MJEditor();
-    mjeditor.format();    
+    const myTextarea = document.getElementById('input');
+    const editor = CodeMirror.fromTextArea(myTextarea, {
+        lineNumbers: true,
+        lineWrapping: true,
+        mode: 'stex',
+        theme: 'zenburn'
+    });
+    var mjeditor = new MJEditor(editor);
+    mjeditor.format();
     mjeditor.makeLink();
 };
