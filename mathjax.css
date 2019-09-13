@@ -1,6 +1,5 @@
 #border {
-    border:1px solid #cbcbcb;
-    //max-width: fit-content;
+    border:1px solid #dcdccc;
     max-height: fit-content;
     float: left;
     overflow: hidden;
@@ -30,13 +29,14 @@ a:hover {
 }
 a:visited {
     text-decoration: none;
-    color: #cbcbcb;
+    color: #dcdccc;
 }
 a {
-    border: 1px solid #cbcbcb;
+    border: 1px solid #dcdccc;
     padding: 5px;
     text-decoration: none;
-    color: #cbcbcb;
+    color: #dcdccc;
+    
 }
 body {
     font-family: sans-serif;
