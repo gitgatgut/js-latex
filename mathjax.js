@@ -29,6 +29,7 @@ class MJEditor {
         $('#download').click(() => {
             this.downloadSvg();
         });
+        this.input.focus();
     }
     makeLink() {
         const url = new URL(window.location.href);
