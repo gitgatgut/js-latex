@@ -38,11 +38,11 @@ a {
     padding: 5px;
     text-decoration: none;
     color: #dcdccc;
-    
 }
 body {
     font-family: sans-serif;
     background: #272822;
+    color: #dcdccc;
 }
 mjx-container {
     display: grid !important;
